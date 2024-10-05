@@ -19,7 +19,9 @@ namespace Inputs
 
         private GenericEventBus<TBaseEvent> _eventBus;
 
-        public InputReader() { }
+        public InputReader()
+        {
+        }
 
         public void Init()
         {
@@ -64,9 +66,12 @@ namespace Inputs
 
         #region Actions
 
+        private MoveEvent _moveEvent = new();
+        private SprintEvent _sprintEvent = new();
+        private CancelSprintEvent _cancelSprintEven = new();
+        private LookEvent _lookEventEven = new();
 
         #endregion
-
 
 
         public void OnAttack(InputAction.CallbackContext context)
@@ -101,7 +106,9 @@ namespace Inputs
 
         public void OnLook(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnLook - {context.phase}");
+            Debug.Log($"- OnLook - {context.phase}, {context.ReadValue<Vector2>()}");
+            _lookEventEven.LookDirection = context.ReadValue<Vector2>();
+            _eventBus.RaiseImmediately<LookEvent>(_lookEventEven);
         }
 
         public void OnMiddleClick(InputAction.CallbackContext context)
@@ -111,6 +118,17 @@ namespace Inputs
 
         public void OnMove(InputAction.CallbackContext context)
         {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                _moveEvent.Direction = context.ReadValue<Vector2>();
+                _eventBus.RaiseImmediately<MoveEvent>(_moveEvent);
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                _moveEvent.Direction = context.ReadValue<Vector2>();
+                _eventBus.RaiseImmediately<MoveEvent>(_moveEvent);
+            }
+
             Debug.Log($"- OnMove - {context.phase}, value - {context.ReadValue<Vector2>()}");
         }
 
@@ -146,6 +164,13 @@ namespace Inputs
 
         public void OnSprint(InputAction.CallbackContext context)
         {
+            if (context.phase == InputActionPhase.Started)
+                _eventBus.RaiseImmediately<SprintEvent>(_sprintEvent);
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                _eventBus.RaiseImmediately<CancelSprintEvent>(_cancelSprintEven);
+            }
+
             Debug.Log($"- OnSprint - {context.phase}");
         }
 
