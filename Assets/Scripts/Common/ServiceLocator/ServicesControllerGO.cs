@@ -4,6 +4,7 @@ using GenericEventBus;
 using Inputs;
 using ServiceLocator.Reflection;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ServiceLocator
 {
@@ -18,6 +19,30 @@ namespace ServiceLocator
 
         [RegisterField(typeof(IDisposable))]
         private GenericEventBus<TBaseEvent> _eventBus;
+
+        private bool opened = false;
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                HandleOpenScene();
+            }
+        }
+
+        private void HandleOpenScene()
+        {
+            if (!opened)
+            {
+                SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
+                opened = true;
+            }
+            else
+            {
+                SceneManager.UnloadSceneAsync("MainMenu", UnloadSceneOptions.None);
+                opened = false;
+            }
+        }
 
         private void Awake()
         {
