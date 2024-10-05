@@ -108,7 +108,7 @@ namespace Inputs
         {
             Debug.Log($"- OnLook - {context.phase}, {context.ReadValue<Vector2>()}");
             _lookEventEven.LookDirection = context.ReadValue<Vector2>();
-            _eventBus.RaiseImmediately<LookEvent>(_lookEventEven);
+            _eventBus.Raise<LookEvent>(_lookEventEven);
         }
 
         public void OnMiddleClick(InputAction.CallbackContext context)
@@ -121,12 +121,12 @@ namespace Inputs
             if (context.phase == InputActionPhase.Performed)
             {
                 _moveEvent.Direction = context.ReadValue<Vector2>();
-                _eventBus.RaiseImmediately<MoveEvent>(_moveEvent);
+                _eventBus.Raise<MoveEvent>(_moveEvent);
             }
             else if (context.phase == InputActionPhase.Canceled)
             {
                 _moveEvent.Direction = context.ReadValue<Vector2>();
-                _eventBus.RaiseImmediately<MoveEvent>(_moveEvent);
+                _eventBus.Raise<MoveEvent>(_moveEvent);
             }
 
             Debug.Log($"- OnMove - {context.phase}, value - {context.ReadValue<Vector2>()}");
@@ -165,10 +165,10 @@ namespace Inputs
         public void OnSprint(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Started)
-                _eventBus.RaiseImmediately<SprintEvent>(_sprintEvent);
+                _eventBus.Raise<SprintEvent>(_sprintEvent);
             else if (context.phase == InputActionPhase.Canceled)
             {
-                _eventBus.RaiseImmediately<CancelSprintEvent>(_cancelSprintEven);
+                _eventBus.Raise<CancelSprintEvent>(_cancelSprintEven);
             }
 
             Debug.Log($"- OnSprint - {context.phase}");
