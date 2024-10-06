@@ -44,6 +44,7 @@ namespace Player
         public void OnUpdateTrigger()
         {
             _playerMover.Move();
+            _playerMover.DoGravity();
         }
 
         public void SubscribeToEvents()
@@ -136,7 +137,7 @@ namespace Player
 
         private bool _isSprint = false;
 
-        private Vector3 velocity;
+        private float _gravVariant;
 
         public PlayerMover(PlayerSettings playerSettings)
         {
@@ -148,8 +149,14 @@ namespace Player
         {
             if (_playerSettings.characterController.isGrounded)
             {
-                velocity.y = Mathf.Sqrt(_playerSettings.jumpHeight * -2f * _playerSettings.gravity);
+                _gravVariant = Mathf.Sqrt(_playerSettings.jumpHeight * -2f * _playerSettings.gravity);
             }
+        }
+
+        public void DoGravity()
+        {
+            _gravVariant += _playerSettings.gravity * Time.deltaTime;
+            _characterController.Move(new Vector3(0, _gravVariant, 0) * Time.deltaTime);
         }
 
 
@@ -164,9 +171,6 @@ namespace Player
                         _moveDirection.y);
 
                 _characterController.Move(direction * (speed * Time.deltaTime));
-
-                velocity.y += _playerSettings.gravity * Time.deltaTime;
-                _characterController.Move(velocity * Time.deltaTime);
             }
         }
 
