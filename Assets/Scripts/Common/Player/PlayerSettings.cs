@@ -15,6 +15,10 @@ namespace Player
 
         public float walkSpeed = 5f;
         public float sprintSpeed = 15f;
+        
+        public float jumpForce = 5f; 
+        public float gravity = -9.81f;
+        public float jumpHeight = 2f; 
     }
 
     [System.Serializable]

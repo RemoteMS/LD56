@@ -69,7 +69,8 @@ namespace Inputs
         private MoveEvent _moveEvent = new();
         private SprintEvent _sprintEvent = new();
         private CancelSprintEvent _cancelSprintEven = new();
-        private LookEvent _lookEventEven = new();
+        private LookEvent _lookEvent = new();
+        private JumpEvent _jumpEvent = new();
 
         #endregion
 
@@ -102,13 +103,16 @@ namespace Inputs
         public void OnJump(InputAction.CallbackContext context)
         {
             Debug.Log($"- OnJump - {context.phase}");
+
+            if (context.phase == InputActionPhase.Started)
+                _eventBus.Raise<JumpEvent>(_jumpEvent);
         }
 
         public void OnLook(InputAction.CallbackContext context)
         {
             Debug.Log($"- OnLook - {context.phase}, {context.ReadValue<Vector2>()}");
-            _lookEventEven.LookDirection = context.ReadValue<Vector2>();
-            _eventBus.Raise<LookEvent>(_lookEventEven);
+            _lookEvent.LookDirection = context.ReadValue<Vector2>();
+            _eventBus.Raise<LookEvent>(_lookEvent);
         }
 
         public void OnMiddleClick(InputAction.CallbackContext context)

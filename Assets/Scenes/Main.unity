@@ -1198,9 +1198,9 @@ AudioSource:
   m_GameObject: {fileID: 1503493019}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2054522997838959753, guid: 4a31c39777def46ebbdd3afa8e09d939, type: 2}
+  m_audioClip: {fileID: 8300000, guid: d7c6b8ca0ba174c7bbf7b8b888d799c1, type: 3}
+  m_Resource: {fileID: 8300000, guid: d7c6b8ca0ba174c7bbf7b8b888d799c1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1927,7 +1927,7 @@ MonoBehaviour:
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
-  m_OverrideVoxelSize: 1
+  m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 7f29d1b86dc3b467c92fae94a6d18510, type: 2}

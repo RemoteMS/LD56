@@ -38,6 +38,7 @@ namespace Player
 
         public void OnLateUpdateTrigger()
         {
+            Debug.Log($"grounded - {_playerSettings.characterController.isGrounded}");
         }
 
         public void OnUpdateTrigger()
@@ -51,6 +52,7 @@ namespace Player
             _eventBus.SubscribeTo<SprintEvent>(HandleSprintEvent);
             _eventBus.SubscribeTo<CancelSprintEvent>(HandleCancelSprintEvent);
             _eventBus.SubscribeTo<LookEvent>(HandleLookEventEvent);
+            _eventBus.SubscribeTo<JumpEvent>(HandleJumpEventEvent);
         }
 
         public void UnsubscribeFromEvents()
@@ -59,7 +61,14 @@ namespace Player
             _eventBus.UnsubscribeFrom<SprintEvent>(HandleSprintEvent);
             _eventBus.UnsubscribeFrom<CancelSprintEvent>(HandleCancelSprintEvent);
             _eventBus.UnsubscribeFrom<LookEvent>(HandleLookEventEvent);
+            _eventBus.UnsubscribeFrom<JumpEvent>(HandleJumpEventEvent);
         }
+
+        private void HandleJumpEventEvent(ref JumpEvent eventdata)
+        {
+            _playerMover.Jump();
+        }
+
 
         private void HandleLookEventEvent(ref LookEvent eventdata)
         {
@@ -127,11 +136,22 @@ namespace Player
 
         private bool _isSprint = false;
 
+        private Vector3 velocity;
+
         public PlayerMover(PlayerSettings playerSettings)
         {
             _characterController = playerSettings.characterController;
             _playerSettings = playerSettings;
         }
+
+        public void Jump()
+        {
+            if (_playerSettings.characterController.isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(_playerSettings.jumpHeight * -2f * _playerSettings.gravity);
+            }
+        }
+
 
         public void Move()
         {
@@ -144,6 +164,9 @@ namespace Player
                         _moveDirection.y);
 
                 _characterController.Move(direction * (speed * Time.deltaTime));
+
+                velocity.y += _playerSettings.gravity * Time.deltaTime;
+                _characterController.Move(velocity * Time.deltaTime);
             }
         }
 
