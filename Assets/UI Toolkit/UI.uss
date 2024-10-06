@@ -1,5 +1,38 @@
-.custom-label {
-    font-size: 20px;
-    -unity-font-style: bold;
-    color: rgb(68, 138, 255);
+.ui-menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.left {
+    background-color: rgb(248, 26, 26);
+    width: 20%;
+}
+
+.right-content {
+    background-color: rgb(25, 112, 255);
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.setting-param-container {
+    flex-grow: 0; /* Не даем элементу расти */
+    height: auto; /* Высота зависит от содержимого */
+    width: 100%;
+    max-height: 200px; /* Ограничение максимальной высоты */
+    margin-bottom: 10px; /* Отступ между контейнерами */
+    overflow: visible; /* Убираем возможное обрезание содержимого */
+}
+
+.slider-container {
+    flex-grow: 0; /* Не даем элементу расти */
+    height: auto; /* Высота зависит от содержимого */
+    width: 100%; /* Растягиваем на всю ширину родителя */
+    max-height: 50px; /* Ограничение максимальной высоты для слайдеров */
+    margin-bottom: 5px; /* Отступ между слайдерами */
+    overflow: visible; /* Убираем возможное обрезание содержимого */
 }
