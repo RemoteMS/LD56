@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3258454738282778810}
-  - component: {fileID: 1923220300052998491}
   - component: {fileID: 3924759454506438873}
   m_Layer: 0
   m_Name: StairsCollider (3)
@@ -33,14 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4138918669476898145}
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 90}
---- !u!33 &1923220300052998491
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18662057677469108}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &3924759454506438873
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -72,10 +63,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4391012321137223122}
-  - component: {fileID: 4605916088313356869}
   - component: {fileID: 5328819506944714754}
+  - component: {fileID: 3568609566672434548}
   m_Layer: 0
-  m_Name: StairsCollider (2)
+  m_Name: StairsCollider (2) ___
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,21 +80,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69598165070446791}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.16615067, y: -0.6873092, z: 0.6873092, w: 0.16615067}
-  m_LocalPosition: {x: -0.076, y: 4.678, z: 0.66}
-  m_LocalScale: {x: 2.88, y: 1, z: 1}
+  m_LocalRotation: {x: -0.17405677, y: -0.68534976, z: 0.68534976, w: 0.17405677}
+  m_LocalPosition: {x: 0.322, y: 4.521, z: 0.635}
+  m_LocalScale: {x: 3.4, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8752138100150769214}
-  m_LocalEulerAnglesHint: {x: 62.82, y: -90, z: 90}
---- !u!33 &4605916088313356869
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69598165070446791}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  m_LocalEulerAnglesHint: {x: 61.5, y: -90, z: 90}
 --- !u!64 &5328819506944714754
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -126,6 +109,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &3568609566672434548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69598165070446791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &343468559329607808
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +137,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6248059645195928911}
-  - component: {fileID: 7083311086735719022}
   - component: {fileID: 8949047415673795777}
   m_Layer: 0
   m_Name: StairsCollider (1)
@@ -159,14 +160,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4138918669476898145}
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 90}
---- !u!33 &7083311086735719022
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343468559329607808}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &8949047415673795777
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -174,6 +167,60 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343468559329607808}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1980299395824721714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9013331309796626072}
+  - component: {fileID: 6481650151225890448}
+  m_Layer: 0
+  m_Name: StairsCollider (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9013331309796626072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980299395824721714}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -1.681, y: 5.345, z: 0.636}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4138918669476898145}
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 90}
+--- !u!64 &6481650151225890448
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980299395824721714}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -198,7 +245,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 242230737726457308}
-  - component: {fileID: 7742000265269390485}
   - component: {fileID: 1659267925593676050}
   m_Layer: 0
   m_Name: StairsCollider
@@ -222,14 +268,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8752138100150769214}
   m_LocalEulerAnglesHint: {x: 63.69, y: 90, z: 90}
---- !u!33 &7742000265269390485
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066201154366645718}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &1659267925593676050
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -261,7 +299,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8164068855582525380}
-  - component: {fileID: 5125499591087029364}
   - component: {fileID: 4770729995888642946}
   m_Layer: 0
   m_Name: StairsCollider (1)
@@ -285,14 +322,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8752138100150769214}
   m_LocalEulerAnglesHint: {x: 63.69, y: 90, z: 90}
---- !u!33 &5125499591087029364
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2577133827146790325}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &4770729995888642946
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -433,7 +462,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3593284511497812254}
-  - component: {fileID: 8133940478245492057}
   - component: {fileID: 2572962755343419167}
   m_Layer: 0
   m_Name: StairsCollider (3)
@@ -457,14 +485,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8752138100150769214}
   m_LocalEulerAnglesHint: {x: 62.82, y: -90, z: 90}
---- !u!33 &8133940478245492057
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4223763640485965399}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &2572962755343419167
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -519,6 +539,7 @@ Transform:
   - {fileID: 6248059645195928911}
   - {fileID: 9178851717413796974}
   - {fileID: 3258454738282778810}
+  - {fileID: 9013331309796626072}
   - {fileID: 4675990432464024955}
   - {fileID: 8752138100150769214}
   m_Father: {fileID: 5660466808976615638}
@@ -601,7 +622,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9178851717413796974}
-  - component: {fileID: 943024602790657462}
   - component: {fileID: 5688730860842809007}
   m_Layer: 0
   m_Name: StairsCollider (2)
@@ -625,14 +645,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4138918669476898145}
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 90}
---- !u!33 &943024602790657462
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8851050826981423404}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &5688730860842809007
 MeshCollider:
   m_ObjectHideFlags: 0
