@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3258454738282778810}
   - component: {fileID: 3924759454506438873}
+  - component: {fileID: 6817015800208930441}
   m_Layer: 0
   m_Name: StairsCollider (3)
   m_TagString: Untagged
@@ -54,6 +55,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6817015800208930441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18662057677469108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &69598165070446791
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,6 +85,7 @@ GameObject:
   - component: {fileID: 4391012321137223122}
   - component: {fileID: 5328819506944714754}
   - component: {fileID: 3568609566672434548}
+  - component: {fileID: 3093619126345376340}
   m_Layer: 0
   m_Name: StairsCollider (2) ___
   m_TagString: Untagged
@@ -128,6 +149,25 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &3093619126345376340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69598165070446791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &343468559329607808
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6248059645195928911}
   - component: {fileID: 8949047415673795777}
+  - component: {fileID: 5842018664647724070}
   m_Layer: 0
   m_Name: StairsCollider (1)
   m_TagString: Untagged
@@ -182,6 +223,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &5842018664647724070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343468559329607808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &1980299395824721714
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9013331309796626072}
   - component: {fileID: 6481650151225890448}
+  - component: {fileID: 6337969980550995886}
   m_Layer: 0
   m_Name: StairsCollider (5)
   m_TagString: Untagged
@@ -236,6 +297,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6337969980550995886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980299395824721714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2066201154366645718
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 242230737726457308}
   - component: {fileID: 1659267925593676050}
+  - component: {fileID: 3832840567972599347}
   m_Layer: 0
   m_Name: StairsCollider
   m_TagString: Untagged
@@ -290,6 +371,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &3832840567972599347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066201154366645718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2577133827146790325
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8164068855582525380}
   - component: {fileID: 4770729995888642946}
+  - component: {fileID: 4843053007971881065}
   m_Layer: 0
   m_Name: StairsCollider (1)
   m_TagString: Untagged
@@ -344,6 +445,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4843053007971881065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2577133827146790325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2603105682358678846
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +476,7 @@ GameObject:
   - component: {fileID: 156198021306862587}
   - component: {fileID: 5373359249607210996}
   - component: {fileID: 9110825033467324862}
+  - component: {fileID: 5876533826097238492}
   m_Layer: 0
   m_Name: floor
   m_TagString: Untagged
@@ -453,6 +574,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &5876533826097238492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603105682358678846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &4223763640485965399
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3593284511497812254}
   - component: {fileID: 2572962755343419167}
+  - component: {fileID: 336311811141044075}
   m_Layer: 0
   m_Name: StairsCollider (3)
   m_TagString: Untagged
@@ -507,6 +648,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &336311811141044075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223763640485965399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &4441657315014076949
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,6 +783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9178851717413796974}
   - component: {fileID: 5688730860842809007}
+  - component: {fileID: 8702089975344722709}
   m_Layer: 0
   m_Name: StairsCollider (2)
   m_TagString: Untagged
@@ -667,6 +828,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &8702089975344722709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851050826981423404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &9167126029657596171
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +858,7 @@ GameObject:
   - component: {fileID: 4675990432464024955}
   - component: {fileID: 2469852992637460812}
   - component: {fileID: 7112421571180006396}
+  - component: {fileID: 1079065605279214299}
   m_Layer: 0
   m_Name: StairsCollider (4)
   m_TagString: Untagged
@@ -730,6 +911,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1079065605279214299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9167126029657596171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &8134182499209699062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -785,10 +985,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 743235f1e7fbf4fdeb7336d46fb73a4f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8677991702566302518}
   m_SourcePrefab: {fileID: 100100000, guid: 743235f1e7fbf4fdeb7336d46fb73a4f, type: 3}
 --- !u!4 &8604358671069788445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 743235f1e7fbf4fdeb7336d46fb73a4f, type: 3}
   m_PrefabInstance: {fileID: 8134182499209699062}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8944995703082116007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 743235f1e7fbf4fdeb7336d46fb73a4f, type: 3}
+  m_PrefabInstance: {fileID: 8134182499209699062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8677991702566302518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8944995703082116007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
