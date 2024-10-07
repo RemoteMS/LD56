@@ -1,5 +1,7 @@
 using System;
 using EventBus.Events;
+using EventBus.Events.UI;
+using EventBus.Events.UI.AudioSettings;
 using GenericEventBus;
 using Helpers.Interfaces;
 using ServiceLocator;
@@ -59,12 +61,14 @@ namespace UI
 
 
             _masterSlider = _root.Q<Slider>(MasterSlider);
-
             _ambientSlider = _root.Q<Slider>(AmbientSlider);
-
             _sfxSlider = _root.Q<Slider>(SfxSlider);
-
             _sensitivitySlider = _root.Q<Slider>(SensitivitySlider);
+
+            _masterSlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt,      "Master"));
+            _ambientSlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt,     "Ambient"));
+            _sfxSlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt,         "SFX"));
+            _sensitivitySlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt, "Mouse Sensitivity"));
         }
 
         private void OnDisable()
@@ -73,6 +77,10 @@ namespace UI
             _settingsButton.clicked -= OnSettingsClicked;
             _exitButton.clicked -= OnExitClicked;
 
+            _masterSlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt,      "Master"));
+            _ambientSlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt,     "Ambient"));
+            _sfxSlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt,         "SFX"));
+            _sensitivitySlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt, "Mouse Sensitivity"));
 
             UnsubscribeFromEvents();
         }
@@ -100,25 +108,45 @@ namespace UI
             HandleSliderData(sliderName, evt.newValue);
         }
 
+        private float MasterVal => _masterSlider.value;
+        private MasterEvent _masterEvent = new();
+
+        private float AmbientVal => _ambientSlider.value;
+        private AmbientEvent _ambientEvent = new();
+
+        private float SfxVal => _sfxSlider.value;
+        private SFXEvent _sfxEvent = new();
+
+        private float MouseVal => _sensitivitySlider.value;
+        private MouseSensitivityEvent _sensitivityEventEvent = new();
+
 
         private void HandleSliderData(string sliderName, float value)
         {
             switch (sliderName)
             {
                 case "Master":
+                    _masterEvent.Value = MasterVal;
+                    _eventBus.Raise<MasterEvent>(_masterEvent);
+
                     Debug.Log($"Adjusting Master volume to: {value}");
-                    // AudioListener.volume = value / 100f;
                     break;
 
                 case "Ambient":
+                    _ambientEvent.Value = AmbientVal;
+                    _eventBus.Raise<AmbientEvent>(_ambientEvent);
                     Debug.Log($"Adjusting Ambient sound to: {value}");
                     break;
 
                 case "SFX":
+                    _sfxEvent.Value = SfxVal;
+                    _eventBus.Raise<SFXEvent>(_sfxEvent);
                     Debug.Log($"Adjusting SFX sound to: {value}");
                     break;
 
                 case "Mouse Sensitivity":
+                    _sensitivityEventEvent.Value = MouseVal;
+                    _eventBus.Raise<MouseSensitivityEvent>(_sensitivityEventEvent);
                     Debug.Log($"Adjusting Mouse sensitivity to: {value}");
                     break;
 
@@ -137,23 +165,13 @@ namespace UI
 
         public void SubscribeToEvents()
         {
-            _masterSlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt,      "Master"));
-            _ambientSlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt,     "Ambient"));
-            _sfxSlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt,         "SFX"));
-            _sensitivitySlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt, "Mouse Sensitivity"));
-
             _eventBus.SubscribeTo<PauseEvent>(HandlePauseEvent);
             _eventBus.SubscribeTo<ResumeEvent>(HandleResumeEvent);
         }
 
+
         public void UnsubscribeFromEvents()
         {
-            _masterSlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt,      "Master"));
-            _ambientSlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt,     "Ambient"));
-            _sfxSlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt,         "SFX"));
-            _sensitivitySlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt, "Mouse Sensitivity"));
-
-
             _eventBus.UnsubscribeFrom<PauseEvent>(HandlePauseEvent);
             _eventBus.UnsubscribeFrom<ResumeEvent>(HandleResumeEvent);
         }
