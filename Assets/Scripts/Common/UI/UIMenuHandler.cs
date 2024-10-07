@@ -18,40 +18,53 @@ namespace UI
         private Button _settingsButton;
         private Button _exitButton;
 
-        private Slider[] _sliders;
-        private float[] _sliderValues;
+        private Slider _masterSlider;
+        private Slider _ambientSlider;
+        private Slider _sfxSlider;
+        private Slider _sensitivitySlider;
 
         private VisualElement _root;
-        private VisualElement _uiMenu;
 
-        [SerializeField] private bool _hidden = true;
+        private bool _hidden = true;
+
+        private VisualElement _uiMenu;
         private GenericEventBus<TBaseEvent> _eventBus;
 
+        private const string UIMenu = "ui-menu";
         private const string Hidden = "hidden";
+
+        private const string ResumeButton = "resume-button";
+        private const string SettingsButton = "settings-button";
+        private const string ExitButton = "exit-button";
+        private const string MasterSlider = "master-slider";
+        private const string AmbientSlider = "ambient-slider";
+        private const string SfxSlider = "sfx-slider";
+        private const string SensitivitySlider = "sensitivity-slider";
+
 
         private void OnEnable()
         {
             _root = uiDocument.rootVisualElement;
-            _uiMenu = _root.Q<VisualElement>("ui-menu");
 
-            _resumeButton = _root.Q<Button>("resume-button");
-            _settingsButton = _root.Q<Button>("settings-button");
-            _exitButton = _root.Q<Button>("exit-button");
+            _uiMenu = _root.Q<VisualElement>(UIMenu);
+
+
+            _resumeButton = _root.Q<Button>(ResumeButton);
+            _settingsButton = _root.Q<Button>(SettingsButton);
+            _exitButton = _root.Q<Button>(ExitButton);
 
             _resumeButton.clicked += OnResumeClicked;
             _settingsButton.clicked += OnSettingsClicked;
             _exitButton.clicked += OnExitClicked;
 
 
-            _sliders = _root.Query<Slider>().ToList().ToArray();
-            _sliderValues = new float[_sliders.Length];
+            _masterSlider = _root.Q<Slider>(MasterSlider);
 
+            _ambientSlider = _root.Q<Slider>(AmbientSlider);
 
-            for (var i = 0; i < _sliders.Length; i++)
-            {
-                var sliderIndex = i;
-                _sliders[i].RegisterValueChangedCallback(evt => OnSliderValueChanged(evt, sliderIndex));
-            }
+            _sfxSlider = _root.Q<Slider>(SfxSlider);
+
+            _sensitivitySlider = _root.Q<Slider>(SensitivitySlider);
         }
 
         private void OnDisable()
@@ -60,10 +73,6 @@ namespace UI
             _settingsButton.clicked -= OnSettingsClicked;
             _exitButton.clicked -= OnExitClicked;
 
-            foreach (var slider in _sliders)
-            {
-                slider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt, 0));
-            }
 
             UnsubscribeFromEvents();
         }
@@ -85,31 +94,36 @@ namespace UI
         }
 
 
-        private void OnSliderValueChanged(ChangeEvent<float> evt, int sliderIndex)
+        private void OnSliderValueChanged(ChangeEvent<float> evt, string sliderName)
         {
-            _sliderValues[sliderIndex] = evt.newValue;
-
-            Debug.Log($"Slider {sliderIndex} value changed to: {evt.newValue}");
-
-            HandleSliderData(sliderIndex, evt.newValue);
+            Debug.Log($"{sliderName} slider value changed to: {evt.newValue}");
+            HandleSliderData(sliderName, evt.newValue);
         }
 
 
-        private void HandleSliderData(int sliderIndex, float value)
+        private void HandleSliderData(string sliderName, float value)
         {
-            switch (sliderIndex)
+            switch (sliderName)
             {
-                case 0:
-                    Debug.Log($"slider - Adjusting volume to: {value}");
+                case "Master":
+                    Debug.Log($"Adjusting Master volume to: {value}");
+                    // AudioListener.volume = value / 100f;
                     break;
-                case 1:
-                    Debug.Log($"slider - Adjusting brightness to: {value}");
+
+                case "Ambient":
+                    Debug.Log($"Adjusting Ambient sound to: {value}");
                     break;
-                case 2:
-                    Debug.Log($"slider - Adjusting some other parameter to: {value}");
+
+                case "SFX":
+                    Debug.Log($"Adjusting SFX sound to: {value}");
                     break;
+
+                case "Mouse Sensitivity":
+                    Debug.Log($"Adjusting Mouse sensitivity to: {value}");
+                    break;
+
                 default:
-                    Debug.Log("Unknown slider index");
+                    Debug.Log("Unknown slider");
                     break;
             }
         }
@@ -123,12 +137,23 @@ namespace UI
 
         public void SubscribeToEvents()
         {
+            _masterSlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt,      "Master"));
+            _ambientSlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt,     "Ambient"));
+            _sfxSlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt,         "SFX"));
+            _sensitivitySlider.RegisterValueChangedCallback(evt => OnSliderValueChanged(evt, "Mouse Sensitivity"));
+
             _eventBus.SubscribeTo<PauseEvent>(HandlePauseEvent);
             _eventBus.SubscribeTo<ResumeEvent>(HandleResumeEvent);
         }
 
         public void UnsubscribeFromEvents()
         {
+            _masterSlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt,      "Master"));
+            _ambientSlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt,     "Ambient"));
+            _sfxSlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt,         "SFX"));
+            _sensitivitySlider.UnregisterValueChangedCallback(evt => OnSliderValueChanged(evt, "Mouse Sensitivity"));
+
+
             _eventBus.UnsubscribeFrom<PauseEvent>(HandlePauseEvent);
             _eventBus.UnsubscribeFrom<ResumeEvent>(HandleResumeEvent);
         }

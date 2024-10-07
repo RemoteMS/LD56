@@ -9,20 +9,20 @@
         <engine:VisualElement name="settings-content" class="right-content">
             <engine:VisualElement class="setting-param-container" style="flex-grow: 1;">
                 <engine:Label text="Audio" name="setting-container-label" class="setting-container-label content-header" />
-                <engine:VisualElement name="slider-container" class="slider-container content-text" style="flex-grow: 1;">
-                    <engine:Slider label="Master" value="80" high-value="100" />
+                <engine:VisualElement name="slider-container-1" class="slider-container content-text" style="flex-grow: 1;">
+                    <engine:Slider name="master-slider" label="Master" value="80" high-value="100" />
                 </engine:VisualElement>
-                <engine:VisualElement name="slider-container" class="slider-container content-text" style="flex-grow: 1;">
-                    <engine:Slider label="Ambient" value="80" high-value="100" />
+                <engine:VisualElement name="slider-container-2" class="slider-container content-text" style="flex-grow: 1;">
+                    <engine:Slider name="ambient-slider" label="Ambient" value="80" high-value="100" />
                 </engine:VisualElement>
-                <engine:VisualElement name="slider-container" class="slider-container content-text" style="flex-grow: 1;">
-                    <engine:Slider label="SFX" value="80" high-value="100" />
+                <engine:VisualElement name="slider-container-3" class="slider-container content-text" style="flex-grow: 1;">
+                    <engine:Slider name="sfx-slider" label="SFX" value="80" high-value="100" />
                 </engine:VisualElement>
             </engine:VisualElement>
             <engine:VisualElement class="setting-param-container" style="flex-grow: 1;">
                 <engine:Label text="Control" name="setting-container-label" class="setting-container-label content-header" />
-                <engine:VisualElement name="slider-container" class="slider-container content-text" style="flex-grow: 1;">
-                    <engine:Slider label="Mouse sensitivity" value="80" high-value="100" />
+                <engine:VisualElement name="slider-container-4" class="slider-container content-text" style="flex-grow: 1;">
+                    <engine:Slider name="sensitivity-slider" label="Mouse sensitivity" value="80" high-value="100" />
                 </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>
