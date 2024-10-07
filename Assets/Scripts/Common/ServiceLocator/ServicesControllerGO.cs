@@ -45,6 +45,7 @@ namespace ServiceLocator
         private GM _gameMaster;
 
 
+        [SerializeField] private GMSettings gmSettings;
         [SerializeField] private UIMenuHandler uiMenuHandler;
 
         private void Awake()
@@ -64,6 +65,7 @@ namespace ServiceLocator
         private void RegisterSettings()
         {
             SL.Current.Register(playerSettings);
+            SL.Current.Register(gmSettings);
         }
 
         private void RegisterServices()

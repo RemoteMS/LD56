@@ -1,10 +1,12 @@
 using System;
+using Common.AI.Points;
 using EventBus.Events;
 using GenericEventBus;
 using Helpers.Interfaces;
 using Player;
 using ServiceLocator;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Common.AI.GameMaster
 {
@@ -18,7 +20,7 @@ namespace Common.AI.GameMaster
 
         private GenericEventBus<TBaseEvent> _eventBus;
         private PlayerSettings _playerSettings;
-
+        private GMSettings _settings;
 
         // sorry for hardcode
         private const float Fl3 = 12.39f;
@@ -28,14 +30,29 @@ namespace Common.AI.GameMaster
 
         public Vector3 GetPlayerPoint()
         {
+            Debug.Log("GetPlayerPoint");
+
+            var level = GetClosestLevel(_playerSettings.playerTransform.position.y);
+
+            var a = ReturnRandomPoint(level);
+
+            return a;
+
             return _playerSettings.playerTransform.position;
         }
+
+        private Vector3 ReturnRandomPoint(Room room)
+        {
+            var i = Random.Range(0, room.interestsPoints.Length);
+            return room.interestsPoints[i].transform.position;
+        }
+
 
         public void OnUpdateTrigger()
         {
             var y = _playerSettings.playerTransform.position.y;
 
-            Floor = GetClosest(y);
+            Floor = GetClosestLevel(y).Level;
 
             Debug.Log($"yyy - {Floor}");
         }
@@ -44,6 +61,7 @@ namespace Common.AI.GameMaster
         {
             _eventBus = SL.Current.Get<GenericEventBus<TBaseEvent>>();
             _playerSettings = SL.Current.Get<PlayerSettings>();
+            _settings = SL.Current.Get<GMSettings>();
 
             SubscribeToEvents();
         }
@@ -61,7 +79,7 @@ namespace Common.AI.GameMaster
             UnsubscribeFromEvents();
         }
 
-        private static int GetClosest(float y)
+        private Room GetClosestLevel(float y)
         {
             var diff1 = Mathf.Abs(y - Fl1);
             var diff2 = Mathf.Abs(y - Fl2);
@@ -69,15 +87,15 @@ namespace Common.AI.GameMaster
 
             if (diff1 < diff2 && diff1 < diff3)
             {
-                return 1;
+                return _settings.Level1;
             }
 
             if (diff2 < diff1 && diff2 < diff3)
             {
-                return 2;
+                return _settings.Level2;
             }
 
-            return 3;
+            return _settings.Level3;
         }
     }
 }
