@@ -1,17 +1,19 @@
-using AI.Config;
+using Common.AI.Config;
 using CrashKonijn.Goap.Behaviours;
 using CrashKonijn.Goap.Classes;
 using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Interfaces;
 using UnityEngine;
 
-namespace AI.Actions
+namespace Common.AI.Actions
 {
     public class WanderAction : ActionBase<CommonData>, IInjectable
     {
         private WanderConfigSO WanderConfig;
 
-        public override void Created() { }
+        public override void Created()
+        {
+        }
 
         public override void Start(IMonoAgent agent, CommonData data)
         {
@@ -37,7 +39,9 @@ namespace AI.Actions
             return ActionRunState.Stop;
         }
 
-        public override void End(IMonoAgent agent, CommonData data) { }
+        public override void End(IMonoAgent agent, CommonData data)
+        {
+        }
 
         public void Inject(DependencyInjector injector)
         {

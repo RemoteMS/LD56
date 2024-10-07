@@ -1,20 +1,17 @@
-using System;
-using AI.Config;
-using AI.Goals;
+using Common.AI.Config;
+using Common.AI.Goals;
 using CrashKonijn.Goap.Behaviours;
-using Sensors;
+using Common.Sensors;
 using UnityEngine;
 
-namespace AI.Behaviors
+namespace Common.AI.Behaviors
 {
     [RequireComponent(typeof(AgentBehaviour))]
     public class MonsterBrain : MonoBehaviour
     {
-        [SerializeField]
-        private PlayerSensor PlayerSensor;
+        [SerializeField] private PlayerSensor PlayerSensor;
 
-        [SerializeField]
-        private AttackConfigSO AttackConfig;
+        [SerializeField] private AttackConfigSO AttackConfig;
 
         private AgentBehaviour AgentBehaviour;
 

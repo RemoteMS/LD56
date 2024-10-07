@@ -4,23 +4,20 @@ using CrashKonijn.Goap.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace AI.Behaviors
+namespace Common.AI.Behaviors
 {
     [RequireComponent(typeof(NavMeshAgent), typeof(AgentBehaviour))]
     public class AgentMoveBehaviour : MonoBehaviour
     {
-        [SerializeField]
-        private NavMeshAgent NavMeshAgent;
+        [SerializeField] private NavMeshAgent NavMeshAgent;
 
-        [SerializeField]
-        private Animator Animator;
+        [SerializeField] private Animator Animator;
 
         private AgentBehaviour AgentBehavior;
 
         private ITarget CurrentTarget;
 
-        [SerializeField]
-        private float MinMoveDistance = 0.25f;
+        [SerializeField] private float MinMoveDistance = 0.25f;
         private Vector3 LastPosition;
         private static readonly int WALK = Animator.StringToHash("Walk");
 

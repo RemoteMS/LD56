@@ -1,6 +1,8 @@
 using CrashKonijn.Goap.Behaviours;
 
-namespace AI.Targets
+namespace Common.AI.Targets
 {
-    public class WanderTarget : TargetKeyBase { }
+    public class WanderTarget : TargetKeyBase
+    {
+    }
 }

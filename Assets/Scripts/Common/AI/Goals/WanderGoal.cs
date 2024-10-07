@@ -1,6 +1,8 @@
 using CrashKonijn.Goap.Behaviours;
 
-namespace AI.Goals
+namespace Common.AI.Goals
 {
-    public class WanderGoal : GoalBase { }
+    public class WanderGoal : GoalBase
+    {
+    }
 }

@@ -1,6 +1,8 @@
 using CrashKonijn.Goap.Behaviours;
 
-namespace AI.Targets
+namespace Common.AI.Targets
 {
-    public class PlayerTarget : TargetKeyBase { }
+    public class PlayerTarget : TargetKeyBase
+    {
+    }
 }

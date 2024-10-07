@@ -1,4 +1,4 @@
-namespace AI
+namespace Common.AI
 {
     public interface IInjectable
     {

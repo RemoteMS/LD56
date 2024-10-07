@@ -1,14 +1,13 @@
-using AI.Factories;
+using Common.AI.Factories;
 using CrashKonijn.Goap.Behaviours;
 using UnityEngine;
 
-namespace AI.Behaviors
+namespace Common.AI.Behaviors
 {
     [RequireComponent(typeof(AgentBehaviour))]
     public class GoapSetBinder : MonoBehaviour
     {
-        [SerializeField]
-        private GoapRunnerBehaviour GoapRunner;
+        [SerializeField] private GoapRunnerBehaviour GoapRunner;
 
         void Awake()
         {

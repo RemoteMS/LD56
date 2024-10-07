@@ -1,17 +1,19 @@
-using AI.Config;
+using Common.AI.Config;
 using CrashKonijn.Goap.Classes;
 using CrashKonijn.Goap.Interfaces;
 using CrashKonijn.Goap.Sensors;
 using UnityEngine;
 
-namespace AI.Sensors
+namespace Common.AI.Sensors
 {
     public class PlayerTargetSensor : LocalTargetSensorBase, IInjectable
     {
         private AttackConfigSO AttackConfig;
         private Collider[] Colliders = new Collider[1];
 
-        public override void Created() { }
+        public override void Created()
+        {
+        }
 
         public void Inject(DependencyInjector injector)
         {
@@ -36,6 +38,8 @@ namespace AI.Sensors
             return null;
         }
 
-        public override void Update() { }
+        public override void Update()
+        {
+        }
     }
 }

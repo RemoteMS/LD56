@@ -1,6 +1,6 @@
 using CrashKonijn.Goap.Interfaces;
 
-namespace AI.Actions
+namespace Common.AI.Actions
 {
     public class CommonData : IActionData
     {

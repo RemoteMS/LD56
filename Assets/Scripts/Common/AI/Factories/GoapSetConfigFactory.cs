@@ -1,9 +1,8 @@
-using System;
-using AI.Actions;
-using AI.Goals;
-using AI.Sensors;
-using AI.Targets;
-using AI.WorldKeys;
+using Common.AI.Actions;
+using Common.AI.Goals;
+using Common.AI.Sensors;
+using Common.AI.Targets;
+using Common.AI.WorldKeys;
 using CrashKonijn.Goap.Behaviours;
 using CrashKonijn.Goap.Classes.Builders;
 using CrashKonijn.Goap.Configs.Interfaces;
@@ -11,7 +10,7 @@ using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Resolver;
 using UnityEngine;
 
-namespace AI.Factories
+namespace Common.AI.Factories
 {
     [RequireComponent(typeof(DependencyInjector))]
     public class GoapSetConfigFactory : GoapSetFactoryBase

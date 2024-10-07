@@ -1,17 +1,19 @@
-using AI.Config;
+using Common.AI.Config;
 using CrashKonijn.Goap.Classes;
 using CrashKonijn.Goap.Interfaces;
 using CrashKonijn.Goap.Sensors;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace AI.Sensors
+namespace Common.AI.Sensors
 {
     public class WanderTargetSensor : LocalTargetSensorBase, IInjectable
     {
         private WanderConfigSO WanderConfig;
 
-        public override void Created() { }
+        public override void Created()
+        {
+        }
 
         public override ITarget Sense(IMonoAgent agent, IComponentReference references)
         {
@@ -39,7 +41,9 @@ namespace AI.Sensors
             return agent.transform.position;
         }
 
-        public override void Update() { }
+        public override void Update()
+        {
+        }
 
         public void Inject(DependencyInjector injector)
         {

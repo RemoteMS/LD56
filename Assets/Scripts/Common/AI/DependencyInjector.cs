@@ -1,9 +1,9 @@
-using AI.Config;
+using Common.AI.Config;
 using CrashKonijn.Goap.Behaviours;
 using CrashKonijn.Goap.Classes;
 using CrashKonijn.Goap.Interfaces;
 
-namespace AI
+namespace Common.AI
 {
     public class DependencyInjector : GoapConfigInitializerBase, IGoapInjector
     {

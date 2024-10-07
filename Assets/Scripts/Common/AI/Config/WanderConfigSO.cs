@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AI.Config
+namespace Common.AI.Config
 {
     [CreateAssetMenu(menuName = "AI/Wander config", fileName = "Wander config", order = 2)]
     public class WanderConfigSO : ScriptableObject

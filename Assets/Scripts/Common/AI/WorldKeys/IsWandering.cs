@@ -1,6 +1,8 @@
 using CrashKonijn.Goap.Behaviours;
 
-namespace AI.WorldKeys
+namespace Common.AI.WorldKeys
 {
-    public class IsWandering : WorldKeyBase { }
+    public class IsWandering : WorldKeyBase
+    {
+    }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Common
+namespace Common.Sensors
 {
     [RequireComponent(typeof(CharacterController))]
     public class Player : MonoBehaviour

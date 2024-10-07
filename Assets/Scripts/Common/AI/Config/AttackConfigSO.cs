@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AI.Config
+namespace Common.AI.Config
 {
     [CreateAssetMenu(menuName = "AI/Attack config", fileName = "Attack config", order = 1)]
     public class AttackConfigSO : ScriptableObject

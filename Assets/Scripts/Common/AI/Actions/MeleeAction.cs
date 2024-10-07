@@ -1,17 +1,19 @@
-using AI.Config;
+using Common.AI.Config;
 using CrashKonijn.Goap.Behaviours;
 using CrashKonijn.Goap.Classes;
 using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Interfaces;
 using UnityEngine;
 
-namespace AI.Actions
+namespace Common.AI.Actions
 {
     public class MeleeAction : ActionBase<AttackData>, IInjectable
     {
         private AttackConfigSO AttackConfig;
 
-        public override void Created() { }
+        public override void Created()
+        {
+        }
 
         public override void Start(IMonoAgent agent, AttackData data)
         {
