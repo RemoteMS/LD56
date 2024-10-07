@@ -98,6 +98,7 @@ namespace UI
 
         private void OnExitClicked()
         {
+            _eventBus.Raise<ExitGameEvent>(new());
             Debug.Log("Exit button clicked!");
         }
 

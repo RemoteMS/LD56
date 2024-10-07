@@ -5,9 +5,12 @@ using EventBus.Events.UI.AudioSettings;
 using GenericEventBus;
 using Helpers.Interfaces;
 using Inputs;
-using Player;
 using ServiceLocator;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
+using PlayerSettings = Player.PlayerSettings;
 
 
 namespace Common.GameGontrollers
@@ -73,6 +76,7 @@ namespace Common.GameGontrollers
             _eventBus.SubscribeTo<AmbientEvent>(HandleAmbientEvent);
             _eventBus.SubscribeTo<SFXEvent>(HandleSoundEvent);
             _eventBus.SubscribeTo<MouseSensitivityEvent>(HandleMouseSensitivity);
+            _eventBus.SubscribeTo<ExitGameEvent>(HandleExitGameEvent);
         }
 
         public void UnsubscribeFromEvents()
@@ -83,7 +87,9 @@ namespace Common.GameGontrollers
             _eventBus.UnsubscribeFrom<AmbientEvent>(HandleAmbientEvent);
             _eventBus.UnsubscribeFrom<SFXEvent>(HandleSoundEvent);
             _eventBus.UnsubscribeFrom<MouseSensitivityEvent>(HandleMouseSensitivity);
+            _eventBus.UnsubscribeFrom<ExitGameEvent>(HandleExitGameEvent);
         }
+
 
         private void HandleSoundEvent(ref SFXEvent eventdata)
         {
@@ -103,5 +109,13 @@ namespace Common.GameGontrollers
             _playerSettings.mouseSensitivity = eventdata.Value;
         }
 
+        private void HandleExitGameEvent(ref ExitGameEvent eventdata)
+        {
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+        }
     }
 }

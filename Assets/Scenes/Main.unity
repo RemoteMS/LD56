@@ -447,7 +447,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 73.3369, y: 72.6325}
+  m_SizeDelta: {x: 10.9724, y: 10.867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &338757192
 MonoBehaviour:
@@ -707,7 +707,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSettings:
     playerCameraTransform: {fileID: 330585546}
-    playerCamera: {fileID: 330585545}
     characterController: {fileID: 1800787145}
     playerTransform: {fileID: 1800787144}
     mouseSensitivity: 0.5
@@ -1305,7 +1304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 1175363963}
-  _hidden: 1
 --- !u!1 &1344884256
 GameObject:
   m_ObjectHideFlags: 0
