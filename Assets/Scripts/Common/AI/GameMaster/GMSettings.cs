@@ -12,5 +12,6 @@ namespace Common.AI.GameMaster
         public Room Level2;
         public Room Level3;
         public GameObject target;
+        public GameObject Enemy;
     }
 }

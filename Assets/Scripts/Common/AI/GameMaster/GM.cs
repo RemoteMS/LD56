@@ -151,6 +151,11 @@ namespace Common.AI.GameMaster
             }
         }
 
+        public void Instance()
+        {
+            // spawner.SpawnObject(Vector3.zero, Quaternion.identity);
+        }
+
         private Room GetClosestLevel(float y)
         {
             var diff1 = Mathf.Abs(y - Fl1);
@@ -236,8 +241,8 @@ namespace Common.AI.GameMaster
         private void OnEndReached()
         {
             gameManager.OnEndReached();
-            
-            
+
+
             Debug.Log("Объект прошел все точки!");
         }
     }
