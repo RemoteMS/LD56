@@ -12,7 +12,8 @@ using UnityEngine;
 
 namespace ServiceLocator
 {
-    [DefaultExecutionOrder(-100)]
+    // crutch
+    [DefaultExecutionOrder(-1000)]
     public class ServicesControllerGO : ServicesControllerBase
     {
 
@@ -73,10 +74,11 @@ namespace ServiceLocator
 
             RegisterSettings();
 
+            Debug.Log("_gameMaster registered");
+            SL.Current.Register(_gameMaster);
             SL.Current.Register(_inputReader);
             SL.Current.Register(_appController);
             SL.Current.Register(_playerController);
-            SL.Current.Register(_gameMaster);
         }
 
         private void Init()

@@ -26,6 +26,11 @@ namespace Common.AI.GameMaster
         private const float Fl1 = 1.83f;
 
 
+        public Vector3 GetPlayerPoint()
+        {
+            return _playerSettings.playerTransform.position;
+        }
+
         public void OnUpdateTrigger()
         {
             var y = _playerSettings.playerTransform.position.y;
