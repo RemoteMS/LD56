@@ -59,9 +59,6 @@ namespace Player
             _eventBus.SubscribeTo<CancelSprintEvent>(HandleCancelSprintEvent);
             _eventBus.SubscribeTo<LookEvent>(HandleLookEventEvent);
             _eventBus.SubscribeTo<JumpEvent>(HandleJumpEventEvent);
-            _eventBus.SubscribeTo<TryGetEvent>(HandleInteractEvent);
-            _eventBus.SubscribeTo<RaycastStarted>(HandleRaycastStartedEvent);
-            _eventBus.SubscribeTo<RaycastEnded>(HandleRaycastEndedEvent);
         }
 
 
@@ -72,28 +69,8 @@ namespace Player
             _eventBus.UnsubscribeFrom<CancelSprintEvent>(HandleCancelSprintEvent);
             _eventBus.UnsubscribeFrom<LookEvent>(HandleLookEventEvent);
             _eventBus.UnsubscribeFrom<JumpEvent>(HandleJumpEventEvent);
-            _eventBus.UnsubscribeFrom<TryGetEvent>(HandleInteractEvent);
-            _eventBus.UnsubscribeFrom<RaycastStarted>(HandleRaycastStartedEvent);
-            _eventBus.UnsubscribeFrom<RaycastEnded>(HandleRaycastEndedEvent);
         }
 
-
-        private bool CatTake = false;
-
-        private void HandleRaycastEndedEvent(ref RaycastEnded eventdata)
-        {
-            CatTake = false;
-        }
-
-        private void HandleRaycastStartedEvent(ref RaycastStarted eventdata)
-        {
-            CatTake = true;
-        }
-
-
-        private void HandleInteractEvent(ref TryGetEvent eventdata)
-        {
-        }
 
         private void HandleJumpEventEvent(ref JumpEvent eventdata)
         {
@@ -104,8 +81,6 @@ namespace Player
         private void HandleLookEventEvent(ref LookEvent eventdata)
         {
             _playerWatcher.Look(eventdata.LookDirection);
-
-            Debug.Log($"- OnLook - {eventdata.LookDirection}");
         }
 
         private void HandleCancelSprintEvent(ref CancelSprintEvent eventdata)

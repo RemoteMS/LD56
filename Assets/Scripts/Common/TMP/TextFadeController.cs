@@ -5,6 +5,7 @@ using System.Collections;
 using Common.EventBus.Events;
 using Common.EventBus.Events.InGame;
 using EventBus.Events;
+using EventBus.Events.InGame;
 using GenericEventBus;
 using Helpers.Interfaces;
 using ServiceLocator;
@@ -32,16 +33,41 @@ namespace Common.TMP
         public void SubscribeToEvents()
         {
             _eventBus.SubscribeTo<TryGetEvent>(GetTryGetEvent);
+            _eventBus.SubscribeTo<TakenEvent>(HandleTakenEvent);
+            _eventBus.SubscribeTo<RaycastStarted>(HandleTRaycastStartedEvent);
+            _eventBus.SubscribeTo<RaycastEnded>(HandleRaycastEndedEvent);
         }
+
+
+        public CanvasGroup RaycastTextHelp;
+
+
+        private void HandleRaycastEndedEvent(ref RaycastEnded eventdata)
+        {
+            RaycastTextHelp.alpha = 0;
+        }
+
+        private void HandleTRaycastStartedEvent(ref RaycastStarted eventdata)
+        {
+            RaycastTextHelp.alpha = 1;
+        }
+
 
         private void GetTryGetEvent(ref TryGetEvent eventdata)
         {
-            ShowText(0);
         }
 
         public void UnsubscribeFromEvents()
         {
             _eventBus.UnsubscribeFrom<TryGetEvent>(GetTryGetEvent);
+            _eventBus.UnsubscribeFrom<TakenEvent>(HandleTakenEvent);
+            _eventBus.UnsubscribeFrom<RaycastStarted>(HandleTRaycastStartedEvent);
+            _eventBus.UnsubscribeFrom<RaycastEnded>(HandleRaycastEndedEvent);
+        }
+
+        private void HandleTakenEvent(ref TakenEvent eventdata)
+        {
+            ShowText(eventdata.Value);
         }
 
 

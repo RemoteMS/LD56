@@ -34,7 +34,6 @@ namespace Inputs
             _inputActions.Player.SetCallbacks(this);
             _inputActions.UI.SetCallbacks(this);
 
-            Debug.Log($"Enabling Gameplay Actions {_inputActions.bindings}");
 
             SetGameplay();
         }
@@ -79,49 +78,41 @@ namespace Inputs
 
         public void OnAttack(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnAttack - {context.phase}");
         }
 
         public void OnCancel(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnCancel - {context.phase}");
         }
 
         public void OnClick(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnClick - {context.phase}");
         }
 
         public void OnCrouch(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnCrouch after - {context.phase}");
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Started)
                 _eventBus.Raise<TryGetEvent>(new());
-            Debug.Log($"- OnInteract - {context.phase}");
+            Debug.Log($"- Test OnInteract - {context.phase}");
         }
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnJump - {context.phase}");
-
             if (context.phase == InputActionPhase.Started)
                 _eventBus.Raise<JumpEvent>(_jumpEvent);
         }
 
         public void OnLook(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnLook - {context.phase}, {context.ReadValue<Vector2>()}");
             _lookEvent.LookDirection = context.ReadValue<Vector2>();
             _eventBus.Raise<LookEvent>(_lookEvent);
         }
 
         public void OnMiddleClick(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnMiddleClick - {context.phase}");
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -136,38 +127,30 @@ namespace Inputs
                 _moveEvent.Direction = context.ReadValue<Vector2>();
                 _eventBus.Raise<MoveEvent>(_moveEvent);
             }
-
-            Debug.Log($"- OnMove - {context.phase}, value - {context.ReadValue<Vector2>()}");
         }
 
         public void OnNavigate(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnNavigate - {context.phase}");
         }
 
         public void OnNext(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnNext - {context.phase}");
         }
 
         public void OnPoint(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnPoint - {context.phase}");
         }
 
         public void OnPrevious(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnPrevious - {context.phase}");
         }
 
         public void OnRightClick(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnRightClick - {context}");
         }
 
         public void OnScrollWheel(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnScrollWheel - {context.phase}");
         }
 
         public void OnSprint(InputAction.CallbackContext context)
@@ -178,35 +161,28 @@ namespace Inputs
             {
                 _eventBus.Raise<CancelSprintEvent>(_cancelSprintEven);
             }
-
-            Debug.Log($"- OnSprint - {context.phase}");
         }
 
         public void OnSubmit(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnSubmit - {context.phase}");
         }
 
         public void OnTrackedDeviceOrientation(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnTrackedDeviceOrientation - {context.phase}");
         }
 
         public void OnTrackedDevicePosition(InputAction.CallbackContext context)
         {
-            Debug.Log($"- OnTrackedDevicePosition - {context.phase}");
         }
 
         public void OnPause(InputAction.CallbackContext context)
         {
             _eventBus.Raise<PauseEvent>(new());
-            Debug.Log($"- OnPause - {context.phase}");
         }
 
         public void OnResume(InputAction.CallbackContext context)
         {
             _eventBus.Raise<ResumeEvent>(new());
-            Debug.Log($"- OnResume - {context.phase}");
         }
     }
 }

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using Common.AI.Points;
 using Common.EventBus.Events.InGame;
 using EventBus.Events;
+using EventBus.Events.InGame;
 using GenericEventBus;
 using Helpers.Interfaces;
 using Player;
 using ServiceLocator;
+using Unity.VisualScripting;
 using UnityEngine;
+using IInitializable = Helpers.Interfaces.IInitializable;
 using Random = UnityEngine.Random;
 
 namespace Common.AI.GameMaster
@@ -66,24 +69,21 @@ namespace Common.AI.GameMaster
 
         private Vector3[] GeneratePoints()
         {
-            var uniquePoints = new HashSet<Vector3>();
+            var points = new Vector3[8];
 
-            foreach (var point in _settings.Level1.interestsPoints)
-            {
-                uniquePoints.Add(point.transform.position);
-            }
+            var to = _settings.Level1.interestsPoints.Length - 1;
 
-            foreach (var point in _settings.Level2.interestsPoints)
-            {
-                uniquePoints.Add(point.transform.position);
-            }
+            Debug.Log($"test to - {to} m points - {_settings.Level1.interestsPoints.Length}");
+            points[0] = _settings.Level1.interestsPoints[Random.Range(0, to)].transform.position;
+            points[1] = _settings.Level2.interestsPoints[Random.Range(0, to)].transform.position;
+            points[2] = _settings.Level1.interestsPoints[Random.Range(0, to)].transform.position;
+            points[3] = _settings.Level3.interestsPoints[Random.Range(0, to)].transform.position;
+            points[4] = _settings.Level1.interestsPoints[Random.Range(0, to)].transform.position;
+            points[5] = _settings.Level3.interestsPoints[Random.Range(0, to)].transform.position;
+            points[6] = _settings.Level2.interestsPoints[Random.Range(0, to)].transform.position;
+            points[7] = _settings.Level1.interestsPoints[Random.Range(0, to)].transform.position;
 
-            foreach (var point in _settings.Level3.interestsPoints)
-            {
-                uniquePoints.Add(point.transform.position);
-            }
-
-            return new List<Vector3>(uniquePoints).ToArray();
+            return points;
         }
 
         private PointMover _pointMover;
@@ -103,15 +103,53 @@ namespace Common.AI.GameMaster
 
         public void SubscribeToEvents()
         {
+            _eventBus.SubscribeTo<TryGetEvent>(HandleInteractEvent);
+            _eventBus.SubscribeTo<RaycastStarted>(HandleRaycastStartedEvent);
+            _eventBus.SubscribeTo<RaycastEnded>(HandleRaycastEndedEvent);
         }
+
 
         public void UnsubscribeFromEvents()
         {
+            _eventBus.UnsubscribeFrom<TryGetEvent>(HandleInteractEvent);
+            _eventBus.UnsubscribeFrom<RaycastStarted>(HandleRaycastStartedEvent);
+            _eventBus.UnsubscribeFrom<RaycastEnded>(HandleRaycastEndedEvent);
         }
+
 
         public void Dispose()
         {
             UnsubscribeFromEvents();
+        }
+
+
+        //todo: warning
+        private bool CatTake = false;
+
+        private void HandleRaycastEndedEvent(ref RaycastEnded eventdata)
+        {
+            CatTake = false;
+        }
+
+        private void HandleRaycastStartedEvent(ref RaycastStarted eventdata)
+        {
+            CatTake = true;
+        }
+
+
+        private void HandleInteractEvent(ref TryGetEvent eventdata)
+        {
+            Debug.Log($"HandleInteractEvent - {CatTake}");
+            if (CatTake)
+            {
+                // cj,hfnm mov
+
+                var takenIndex = _pointMover.CurrentPointIndex;
+
+                Debug.LogWarning($"Test HandleInteractEvent - {CatTake}, {takenIndex}");
+                _eventBus.Raise<TakenEvent>(new() { Value = takenIndex });
+                _pointMover.MoveToNextPoint();
+            }
         }
 
         private Room GetClosestLevel(float y)
@@ -138,13 +176,15 @@ namespace Common.AI.GameMaster
         {
             _eventBus.Raise<WinGameEvent>(new());
         }
+
+        public int CurrentPointIndex => _pointMover.CurrentPointIndex;
     }
 
     public class PointMover
     {
         [SerializeField] private Transform objectToMove;
         private Vector3[] points;
-        private int currentPointIndex = 0;
+        public int CurrentPointIndex { get; private set; } = 0;
 
         public PointMover(Transform objectToMove, GM gameManager)
         {
@@ -154,20 +194,37 @@ namespace Common.AI.GameMaster
 
         public void SetPoints(Vector3[] newPoints)
         {
+            Debug.Log($"Test newPoints - [{newPoints}]");
+
             points = newPoints;
-            currentPointIndex = 0;
+            CurrentPointIndex = 0;
         }
 
 
         public void MoveToNextPoint()
         {
-            if (points != null && currentPointIndex < points.Length)
+            Debug.LogWarning(
+                $"Test MoveToNextPoint - {CurrentPointIndex} - {points != null && CurrentPointIndex < points.Length}");
+
+            var a = "";
+            foreach (var point in points)
             {
-                objectToMove.position = points[currentPointIndex];
-                currentPointIndex++;
+                a += $" {point}";
+            }
+
+            Debug.LogWarning($"Test - ppints - {a}");
+            Debug.LogWarning($"Test - CurrentPointIndex {CurrentPointIndex} < points.Length - {points.Length}");
 
 
-                if (currentPointIndex >= points.Length)
+            if (points != null && CurrentPointIndex < points.Length)
+            {
+                Debug.LogWarning($"Test Moved");
+
+                objectToMove.position = points[CurrentPointIndex];
+                CurrentPointIndex++;
+
+
+                if (CurrentPointIndex >= points.Length)
                 {
                     OnEndReached();
                 }
