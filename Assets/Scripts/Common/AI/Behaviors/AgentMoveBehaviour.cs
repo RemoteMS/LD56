@@ -21,6 +21,7 @@ namespace Common.AI.Behaviors
         private Vector3 LastPosition;
         private static readonly int WALK = Animator.StringToHash("Walk");
 
+
         private void Awake()
         {
             if (Animator == null)
@@ -68,5 +69,8 @@ namespace Common.AI.Behaviors
 
             Animator.SetBool(WALK, NavMeshAgent.velocity.magnitude > 0.1f);
         }
+        
+        
+        
     }
 }
