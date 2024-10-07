@@ -8,31 +8,64 @@ namespace Common.AI.Audio
         public AudioClip[] footstepSounds;
         public AudioSource audioSource;
         public NavMeshAgent agent;
+        public Transform player;
 
         public float stepInterval = 0.5f;
-        private float _stepTimer = 0f;
+        private float stepTimer = 0f;
 
-        private void Update()
+        public float maxVolume = 1f;
+        public float minDistance = 1f;
+        public float maxDistance = 20f;
+
+        void Update()
         {
             if (agent.velocity.magnitude > 0.1f && agent.remainingDistance > agent.stoppingDistance)
             {
-                _stepTimer += Time.deltaTime;
+                stepTimer += Time.deltaTime;
 
 
-                if (!(_stepTimer >= stepInterval)) return;
-                PlayFootstepSound();
-                _stepTimer = 0f;
+                if (stepTimer >= stepInterval)
+                {
+                    PlayFootstepSound();
+                    stepTimer = 0f;
+                }
+
+
+                AdjustVolume();
             }
             else
             {
-                _stepTimer = 0f;
+                stepTimer = 0f;
             }
         }
 
-        private void PlayFootstepSound()
+        void PlayFootstepSound()
         {
-            var index = Random.Range(0, footstepSounds.Length);
-            audioSource.PlayOneShot(footstepSounds[index]);
+            int index = Random.Range(0, footstepSounds.Length);
+            audioSource.clip = footstepSounds[index];
+            audioSource.Play();
+        }
+
+        void AdjustVolume()
+        {
+            float distance = Vector3.Distance(transform.position, player.position);
+
+
+            if (distance <= minDistance)
+            {
+                audioSource.volume = maxVolume;
+            }
+
+            else if (distance >= maxDistance)
+            {
+                audioSource.volume = 0;
+            }
+
+            else
+            {
+                float normalizedDistance = (distance - minDistance) / (maxDistance - minDistance);
+                audioSource.volume = Mathf.Lerp(maxVolume, 0, normalizedDistance);
+            }
         }
     }
 }

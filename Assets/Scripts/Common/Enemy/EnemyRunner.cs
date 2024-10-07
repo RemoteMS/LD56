@@ -15,6 +15,7 @@ namespace Common.Enemy
         [SerializeField] private float stoppingDistance = 1f;
 
         private float _timeSinceLastUpdate = 0f;
+        
 
         private void Update()
         {
