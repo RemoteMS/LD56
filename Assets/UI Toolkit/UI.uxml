@@ -6,8 +6,8 @@
             <engine:Button text="Settings" name="settings-button" class="menu-button" />
             <engine:Button text="Exit" name="exit-button" class="menu-button" />
         </engine:VisualElement>
-        <engine:VisualElement name="settings-content" class="right-content">
-            <engine:VisualElement class="setting-param-container" style="flex-grow: 1;">
+        <engine:VisualElement name="settings-content" class="right-content" style="background-color: rgba(65, 70, 80, 0.37);">
+            <engine:VisualElement name="VisualElement" class="setting-param-container" style="flex-grow: 1;">
                 <engine:Label text="Audio" name="setting-container-label" class="setting-container-label content-header" />
                 <engine:VisualElement name="slider-container-1" class="slider-container content-text" style="flex-grow: 1;">
                     <engine:Slider name="master-slider" label="Master" value="80" high-value="100" />

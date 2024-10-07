@@ -60,7 +60,10 @@ namespace Player
             _eventBus.SubscribeTo<LookEvent>(HandleLookEventEvent);
             _eventBus.SubscribeTo<JumpEvent>(HandleJumpEventEvent);
             _eventBus.SubscribeTo<TryGetEvent>(HandleInteractEvent);
+            _eventBus.SubscribeTo<RaycastStarted>(HandleRaycastStartedEvent);
+            _eventBus.SubscribeTo<RaycastEnded>(HandleRaycastEndedEvent);
         }
+
 
         public void UnsubscribeFromEvents()
         {
@@ -70,6 +73,21 @@ namespace Player
             _eventBus.UnsubscribeFrom<LookEvent>(HandleLookEventEvent);
             _eventBus.UnsubscribeFrom<JumpEvent>(HandleJumpEventEvent);
             _eventBus.UnsubscribeFrom<TryGetEvent>(HandleInteractEvent);
+            _eventBus.UnsubscribeFrom<RaycastStarted>(HandleRaycastStartedEvent);
+            _eventBus.UnsubscribeFrom<RaycastEnded>(HandleRaycastEndedEvent);
+        }
+
+
+        private bool CatTake = false;
+
+        private void HandleRaycastEndedEvent(ref RaycastEnded eventdata)
+        {
+            CatTake = false;
+        }
+
+        private void HandleRaycastStartedEvent(ref RaycastStarted eventdata)
+        {
+            CatTake = true;
         }
 
 
@@ -143,7 +161,6 @@ namespace Player
                     _eventBus.Raise<RaycastStarted>(new());
                     isHitting = true;
                 }
-
 
                 Debug.Log($"Hit object: {hit.collider.gameObject.name}, Hit point: {hit.point}");
             }

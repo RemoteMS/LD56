@@ -6,7 +6,7 @@
 }
 
 .left {
-    background-color: rgb(248, 26, 26);
+    background-color: rgb(96, 84, 88);
     width: 20%;
 }
 
@@ -39,19 +39,29 @@
 
 .menu-button {
     font-size: 28px;
-    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans");
+    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/Edu_AU_VIC_WA_NT_Guides/static/EduAUVICWANTGuides-Bold.ttf?fileID=12800000&guid=d24b3a08fe09b4e55842c750e66ea280&type=3#EduAUVICWANTGuides-Bold");
     -unity-font-style: normal;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgb(77, 119, 86);
+    -unity-text-align: upper-center;
+    word-spacing: 20px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    -unity-text-outline-color: rgb(255, 255, 255);
 }
 
 .content-header {
     font-size: 40px;
+    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/Chakra_Petch/ChakraPetch-SemiBoldItalic.ttf?fileID=12800000&guid=7c7974d0533e34fed8e8684a172acd93&type=3#ChakraPetch-SemiBoldItalic");
 }
 
 .content-text {
     font-size: 24px;
+    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/Chakra_Petch/ChakraPetch-SemiBold.ttf?fileID=12800000&guid=00bca9f84cf6d4830bece792cdcca755&type=3#ChakraPetch-SemiBold");
 }
 
 .hidden {
     display: none;
 }
-
