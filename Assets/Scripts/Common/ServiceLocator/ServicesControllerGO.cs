@@ -39,7 +39,6 @@ namespace ServiceLocator
 
         #endregion
 
-        private bool opened = false;
 
         [SerializeField] private UIMenuHandler uiMenuHandler;
 
