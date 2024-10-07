@@ -20,19 +20,33 @@
 }
 
 .setting-param-container {
-    flex-grow: 0; /* Не даем элементу расти */
-    height: auto; /* Высота зависит от содержимого */
+    flex-grow: 0;
+    height: auto;
     width: 100%;
-    max-height: 200px; /* Ограничение максимальной высоты */
-    margin-bottom: 10px; /* Отступ между контейнерами */
-    overflow: visible; /* Убираем возможное обрезание содержимого */
+    max-height: 200px;
+    margin-bottom: 10px;
+    overflow: visible;
 }
 
 .slider-container {
-    flex-grow: 0; /* Не даем элементу расти */
-    height: auto; /* Высота зависит от содержимого */
-    width: 100%; /* Растягиваем на всю ширину родителя */
-    max-height: 50px; /* Ограничение максимальной высоты для слайдеров */
-    margin-bottom: 5px; /* Отступ между слайдерами */
-    overflow: visible; /* Убираем возможное обрезание содержимого */
+    flex-grow: 0;
+    height: auto;
+    width: 100%;
+    max-height: 50px;
+    margin-bottom: 5px;
+    overflow: visible;
+}
+
+.menu-button {
+    font-size: 28px;
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans");
+    -unity-font-style: normal;
+}
+
+.content-header {
+    font-size: 40px;
+}
+
+.content-text {
+    font-size: 24px;
 }

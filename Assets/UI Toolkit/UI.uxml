@@ -2,27 +2,27 @@
     <Style src="project://database/Assets/UI%20Toolkit/UI.uss?fileID=7433441132597879392&amp;guid=08010f4b359e6499aa798ce204f47a4b&amp;type=3#UI" />
     <engine:VisualElement name="ui-container" class="ui-menu">
         <engine:VisualElement name="left-menu" class="left">
-            <engine:Button text="Resume" name="resume-button" />
-            <engine:Button text="Settings&#10;" name="settings-button" />
-            <engine:Button text="Exit&#10;" name="exit-button" />
+            <engine:Button text="Resume" name="resume-button" class="menu-button" />
+            <engine:Button text="Settings&#10;" name="settings-button" class="menu-button" />
+            <engine:Button text="Exit&#10;" name="exit-button" class="menu-button" />
         </engine:VisualElement>
         <engine:VisualElement name="settings-content" class="right-content">
             <engine:Label text="Content&#10;" name="test-label" />
             <engine:VisualElement class="setting-param-container" style="flex-grow: 1;">
-                <engine:Label text="Audio" name="setting-container-label" class="setting-container-label" />
-                <engine:VisualElement name="slider-container" class="slider-container" style="flex-grow: 1;">
+                <engine:Label text="Audio" name="setting-container-label" class="setting-container-label content-header" />
+                <engine:VisualElement name="slider-container" class="slider-container content-text" style="flex-grow: 1;">
                     <engine:Slider label="Slider" value="42" high-value="100" />
                 </engine:VisualElement>
-                <engine:VisualElement name="slider-container" class="slider-container" style="flex-grow: 1;">
+                <engine:VisualElement name="slider-container" class="slider-container content-text" style="flex-grow: 1;">
                     <engine:Slider label="Slider" value="42" high-value="100" />
                 </engine:VisualElement>
-                <engine:VisualElement name="slider-container" class="slider-container" style="flex-grow: 1;">
+                <engine:VisualElement name="slider-container" class="slider-container content-text" style="flex-grow: 1;">
                     <engine:Slider label="Slider" value="42" high-value="100" />
                 </engine:VisualElement>
             </engine:VisualElement>
             <engine:VisualElement class="setting-param-container" style="flex-grow: 1;">
-                <engine:Label text="Audio" name="setting-container-label" class="setting-container-label" />
-                <engine:VisualElement name="slider-container" class="slider-container" style="flex-grow: 1;">
+                <engine:Label text="Audio" name="setting-container-label" class="setting-container-label content-header" />
+                <engine:VisualElement name="slider-container" class="slider-container content-text" style="flex-grow: 1;">
                     <engine:Slider label="Slider" value="42" high-value="100" />
                 </engine:VisualElement>
             </engine:VisualElement>
