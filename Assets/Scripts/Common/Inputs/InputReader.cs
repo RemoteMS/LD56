@@ -195,11 +195,13 @@ namespace Inputs
 
         public void OnPause(InputAction.CallbackContext context)
         {
+            _eventBus.Raise<PauseEvent>(new());
             Debug.Log($"- OnPause - {context.phase}");
         }
 
         public void OnResume(InputAction.CallbackContext context)
         {
+            _eventBus.Raise<ResumeEvent>(new());
             Debug.Log($"- OnResume - {context.phase}");
         }
     }

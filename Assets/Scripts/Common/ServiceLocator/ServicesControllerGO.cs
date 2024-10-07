@@ -1,12 +1,13 @@
 using System;
+using Common.GameGontrollers;
 using EventBus.Events;
 using GenericEventBus;
 using Helpers.Interfaces;
 using Inputs;
 using Player;
 using ServiceLocator.Reflection;
+using UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace ServiceLocator
 {
@@ -21,7 +22,13 @@ namespace ServiceLocator
 
         #endregion
 
+
+        [RegisterField(typeof(IDisposable), typeof(IBeforeDisposable))]
+        private AppController _appController;
+
+
         [RegisterField(typeof(IDisposable))] private GenericEventBus<TBaseEvent> _eventBus;
+
 
         #region Player Controls
 
@@ -34,33 +41,14 @@ namespace ServiceLocator
 
         private bool opened = false;
 
-        // void Update()
-        // {
-        //     if (Input.GetKeyDown(KeyCode.K))
-        //     {
-        //         HandleOpenScene();
-        //     }
-        // }
-
-        private void HandleOpenScene()
-        {
-            if (!opened)
-            {
-                SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
-                opened = true;
-            }
-            else
-            {
-                SceneManager.UnloadSceneAsync("MainMenu", UnloadSceneOptions.None);
-                opened = false;
-            }
-        }
+        [SerializeField] private UIMenuHandler uiMenuHandler;
 
         private void Awake()
         {
             _eventBus = new GenericEventBus<TBaseEvent>();
 
             _inputReader = new InputReader();
+            _appController = new AppController();
             _playerController = new PlayerController();
 
             RegisterToCollection(this);
@@ -82,6 +70,7 @@ namespace ServiceLocator
             RegisterSettings();
 
             SL.Current.Register(_inputReader);
+            SL.Current.Register(_appController);
             SL.Current.Register(_playerController);
         }
 
@@ -89,6 +78,9 @@ namespace ServiceLocator
         {
             _inputReader.Init();
             _playerController.Init();
+            _appController.Init();
+
+            uiMenuHandler.Init();
         }
     }
 }
