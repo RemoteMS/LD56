@@ -117,7 +117,7 @@ namespace UI
         private float SfxVal => _sfxSlider.value;
         private SFXEvent _sfxEvent = new();
 
-        private float MouseVal => _sensitivitySlider.value;
+        private float MouseVal => _sensitivitySlider.value / 10f;
         private MouseSensitivityEvent _sensitivityEventEvent = new();
 
 
