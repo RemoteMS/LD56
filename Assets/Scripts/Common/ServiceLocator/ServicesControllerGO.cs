@@ -49,7 +49,6 @@ namespace ServiceLocator
         [SerializeField] private GMSettings gmSettings;
         [SerializeField] private UIMenuHandler uiMenuHandler;
 
-        
 
         private void Awake()
         {

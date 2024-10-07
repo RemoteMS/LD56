@@ -19,7 +19,7 @@ namespace Common.Target
         private void Update()
         {
             var newY = _startPosition.y + Mathf.Sin(Time.time * floatSpeed) * floatAmplitude;
-            transform.position = new Vector3(_startPosition.x, newY, _startPosition.z);
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
 
 
             transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);

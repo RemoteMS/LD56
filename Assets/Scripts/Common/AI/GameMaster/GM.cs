@@ -8,7 +8,6 @@ using GenericEventBus;
 using Helpers.Interfaces;
 using Player;
 using ServiceLocator;
-using Unity.VisualScripting;
 using UnityEngine;
 using IInitializable = Helpers.Interfaces.IInitializable;
 using Random = UnityEngine.Random;
@@ -95,7 +94,7 @@ namespace Common.AI.GameMaster
             _settings = SL.Current.Get<GMSettings>();
 
             _points = GeneratePoints();
-            _pointMover = new PointMover(_settings.target.transform, this);
+            _pointMover = new PointMover(_settings.target, this);
             _pointMover.SetPoints(_points);
 
             SubscribeToEvents();
@@ -182,11 +181,11 @@ namespace Common.AI.GameMaster
 
     public class PointMover
     {
-        [SerializeField] private Transform objectToMove;
+        [SerializeField] private GameObject objectToMove;
         private Vector3[] points;
         public int CurrentPointIndex { get; private set; } = 0;
 
-        public PointMover(Transform objectToMove, GM gameManager)
+        public PointMover(GameObject objectToMove, GM gameManager)
         {
             this.objectToMove = objectToMove;
             this.gameManager = gameManager;
@@ -220,7 +219,7 @@ namespace Common.AI.GameMaster
             {
                 Debug.LogWarning($"Test Moved");
 
-                objectToMove.position = points[CurrentPointIndex];
+                objectToMove.transform.position = points[CurrentPointIndex];
                 CurrentPointIndex++;
 
 
@@ -237,6 +236,8 @@ namespace Common.AI.GameMaster
         private void OnEndReached()
         {
             gameManager.OnEndReached();
+            
+            
             Debug.Log("Объект прошел все точки!");
         }
     }
