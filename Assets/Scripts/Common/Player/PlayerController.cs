@@ -1,5 +1,8 @@
 using System;
+using Common.EventBus.Events;
+using Common.EventBus.Events.InGame;
 using EventBus.Events;
+using EventBus.Events.InGame;
 using GenericEventBus;
 using Helpers.Interfaces;
 using ServiceLocator;
@@ -31,7 +34,7 @@ namespace Player
             _playerSettings = SL.Current.Get<PlayerSettings>();
 
             _playerMover = new PlayerMover(_playerSettings);
-            _playerWatcher = new PlayerWatcher(_playerSettings);
+            _playerWatcher = new PlayerWatcher(_playerSettings, _eventBus);
 
             SubscribeToEvents();
         }
@@ -56,6 +59,7 @@ namespace Player
             _eventBus.SubscribeTo<CancelSprintEvent>(HandleCancelSprintEvent);
             _eventBus.SubscribeTo<LookEvent>(HandleLookEventEvent);
             _eventBus.SubscribeTo<JumpEvent>(HandleJumpEventEvent);
+            _eventBus.SubscribeTo<TryGetEvent>(HandleInteractEvent);
         }
 
         public void UnsubscribeFromEvents()
@@ -65,6 +69,12 @@ namespace Player
             _eventBus.UnsubscribeFrom<CancelSprintEvent>(HandleCancelSprintEvent);
             _eventBus.UnsubscribeFrom<LookEvent>(HandleLookEventEvent);
             _eventBus.UnsubscribeFrom<JumpEvent>(HandleJumpEventEvent);
+            _eventBus.UnsubscribeFrom<TryGetEvent>(HandleInteractEvent);
+        }
+
+
+        private void HandleInteractEvent(ref TryGetEvent eventdata)
+        {
         }
 
         private void HandleJumpEventEvent(ref JumpEvent eventdata)
@@ -109,11 +119,15 @@ namespace Player
         private const float MaxLimit = 180f;
 
         private float _xRotation = 0f;
+        private GenericEventBus<TBaseEvent> _eventBus;
 
-        public PlayerWatcher(PlayerSettings playerSettings)
+        public PlayerWatcher(PlayerSettings playerSettings, GenericEventBus<TBaseEvent> eventBus)
         {
             _playerSettings = playerSettings;
+            _eventBus = eventBus;
         }
+
+        private bool isHitting = false;
 
         public void Raycast()
         {
@@ -124,7 +138,22 @@ namespace Player
 
             if (Physics.Raycast(ray, out var hit, _playerSettings.rayDistance, _playerSettings.raycastLayerMask))
             {
+                if (!isHitting)
+                {
+                    _eventBus.Raise<RaycastStarted>(new());
+                    isHitting = true;
+                }
+
+
                 Debug.Log($"Hit object: {hit.collider.gameObject.name}, Hit point: {hit.point}");
+            }
+            else
+            {
+                if (isHitting)
+                {
+                    isHitting = false;
+                    _eventBus.Raise<RaycastEnded>(new());
+                }
             }
         }
 

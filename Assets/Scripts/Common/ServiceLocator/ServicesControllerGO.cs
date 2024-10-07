@@ -1,6 +1,7 @@
 using System;
 using Common.AI.GameMaster;
 using Common.GameGontrollers;
+using Common.TMP;
 using EventBus.Events;
 using GenericEventBus;
 using Helpers.Interfaces;
@@ -47,6 +48,8 @@ namespace ServiceLocator
 
         [SerializeField] private GMSettings gmSettings;
         [SerializeField] private UIMenuHandler uiMenuHandler;
+
+        
 
         private void Awake()
         {

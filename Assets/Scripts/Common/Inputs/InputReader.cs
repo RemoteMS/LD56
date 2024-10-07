@@ -1,4 +1,6 @@
 using System;
+using Common.EventBus.Events;
+using Common.EventBus.Events.InGame;
 using EventBus.Events;
 using GenericEventBus;
 using Helpers.Interfaces;
@@ -97,6 +99,8 @@ namespace Inputs
 
         public void OnInteract(InputAction.CallbackContext context)
         {
+            if (context.phase == InputActionPhase.Started)
+                _eventBus.Raise<TryGetEvent>(new());
             Debug.Log($"- OnInteract - {context.phase}");
         }
 
