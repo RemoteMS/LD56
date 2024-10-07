@@ -1,5 +1,6 @@
 using ServiceLocator;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace Player
@@ -7,7 +8,7 @@ namespace Player
     [System.Serializable]
     public class PlayerSettings : IService
     {
-        public Transform playerCamera;
+        public Transform playerCameraTransform;
         public CharacterController characterController;
         public Transform playerTransform;
 
@@ -15,10 +16,13 @@ namespace Player
 
         public float walkSpeed = 5f;
         public float sprintSpeed = 15f;
-        
-        public float jumpForce = 5f; 
+
+        public float jumpForce = 5f;
         public float gravity = -9.81f;
-        public float jumpHeight = 1f; 
+        public float jumpHeight = 1f;
+
+        public float rayDistance = 10f;
+        public LayerMask raycastLayerMask;
     }
 
     [System.Serializable]

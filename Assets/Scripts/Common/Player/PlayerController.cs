@@ -45,6 +45,8 @@ namespace Player
         {
             _playerMover.Move();
             _playerMover.DoGravity();
+
+            _playerWatcher.Raycast();
         }
 
         public void SubscribeToEvents()
@@ -74,6 +76,7 @@ namespace Player
         private void HandleLookEventEvent(ref LookEvent eventdata)
         {
             _playerWatcher.Look(eventdata.LookDirection);
+
             Debug.Log($"- OnLook - {eventdata.LookDirection}");
         }
 
@@ -112,6 +115,19 @@ namespace Player
             _playerSettings = playerSettings;
         }
 
+        public void Raycast()
+        {
+            var ray = new Ray(_playerSettings.playerCameraTransform.position,
+                _playerSettings.playerCameraTransform.forward);
+
+            Debug.DrawRay(ray.origin, ray.direction * MaxLimit, Color.red);
+
+            if (Physics.Raycast(ray, out var hit, _playerSettings.rayDistance, _playerSettings.raycastLayerMask))
+            {
+                Debug.Log($"Hit object: {hit.collider.gameObject.name}, Hit point: {hit.point}");
+            }
+        }
+
         public void Look(Vector2 eventdataLookDirection)
         {
             var mouseX = eventdataLookDirection.x * _playerSettings.mouseSensitivity;
@@ -120,7 +136,7 @@ namespace Player
             _xRotation -= mouseY;
             _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
-            _playerSettings.playerCamera.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
+            _playerSettings.playerCameraTransform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
 
             _playerSettings.playerTransform.Rotate(Vector3.up * mouseX);
         }
