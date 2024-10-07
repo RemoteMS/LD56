@@ -69,8 +69,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  animator: {fileID: 3717100796307624461}
   navMeshAgent: {fileID: 7621963148885977548}
-  timeInterval: 5
+  updateInterval: 5
+  stoppingDistance: 1
 --- !u!1001 &7133524595478130588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,6 +150,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5c782ae0b84a43259509c20326995ff, type: 3}
+--- !u!95 &3717100796307624461 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: d5c782ae0b84a43259509c20326995ff, type: 3}
+  m_PrefabInstance: {fileID: 7133524595478130588}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7311004306415618167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d5c782ae0b84a43259509c20326995ff, type: 3}
