@@ -1,4 +1,5 @@
 using System;
+using Common.AI.GameMaster;
 using Common.GameGontrollers;
 using EventBus.Events;
 using GenericEventBus;
@@ -39,6 +40,9 @@ namespace ServiceLocator
 
         #endregion
 
+        [RegisterField(typeof(IDisposable), typeof(IGameUpdatable))]
+        private GM _gameMaster;
+
 
         [SerializeField] private UIMenuHandler uiMenuHandler;
 
@@ -49,6 +53,7 @@ namespace ServiceLocator
             _inputReader = new InputReader();
             _appController = new AppController();
             _playerController = new PlayerController();
+            _gameMaster = new GM();
 
             RegisterToCollection(this);
             RegisterServices();
@@ -71,6 +76,7 @@ namespace ServiceLocator
             SL.Current.Register(_inputReader);
             SL.Current.Register(_appController);
             SL.Current.Register(_playerController);
+            SL.Current.Register(_gameMaster);
         }
 
         private void Init()
@@ -78,8 +84,19 @@ namespace ServiceLocator
             _inputReader.Init();
             _playerController.Init();
             _appController.Init();
+            _gameMaster.Init();
+
 
             uiMenuHandler.Init();
+        }
+
+
+        public void StartGame()
+        {
+        }
+
+        public void ToMenu()
+        {
         }
     }
 }

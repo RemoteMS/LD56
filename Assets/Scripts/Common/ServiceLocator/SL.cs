@@ -6,7 +6,9 @@ namespace ServiceLocator
 {
     public class SL
     {
-        private SL() { }
+        private SL()
+        {
+        }
 
         private readonly Dictionary<string, IService> _services =
             new Dictionary<string, IService>();

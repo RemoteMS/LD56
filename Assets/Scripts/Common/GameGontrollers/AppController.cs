@@ -42,7 +42,10 @@ namespace Common.GameGontrollers
             _init();
 
             SubscribeToEvents();
-            UnityEngine.Cursor.visible = false;
+
+            // Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
         }
 
         public void BeforeDispose()
@@ -56,22 +59,27 @@ namespace Common.GameGontrollers
 
         private void HandlePauseEvent(ref PauseEvent eventData)
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+
             Time.timeScale = 0f;
             _inputReader.SetUI();
-            UnityEngine.Cursor.visible = true;
         }
 
         private void HandleResumeEvent(ref ResumeEvent eventData)
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
+
             Time.timeScale = 1f;
             _inputReader.SetGameplay();
-            UnityEngine.Cursor.visible = false;
         }
 
         public void SubscribeToEvents()
         {
             _eventBus.SubscribeTo<PauseEvent>(HandlePauseEvent);
-            _eventBus.SubscribeTo<ResumeEvent>(HandleResumeEvent);
+            _eventBus.SubscribeTo<ResumeEvent>(HandleResumeEvent, 1000f);
             _eventBus.SubscribeTo<MasterEvent>(HandleMasterEvent);
             _eventBus.SubscribeTo<AmbientEvent>(HandleAmbientEvent);
             _eventBus.SubscribeTo<SFXEvent>(HandleSoundEvent);

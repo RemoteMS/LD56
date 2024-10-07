@@ -167,7 +167,7 @@ namespace UI
         public void SubscribeToEvents()
         {
             _eventBus.SubscribeTo<PauseEvent>(HandlePauseEvent);
-            _eventBus.SubscribeTo<ResumeEvent>(HandleResumeEvent);
+            _eventBus.SubscribeTo<ResumeEvent>(HandleResumeEvent, 10f);
         }
 
 
