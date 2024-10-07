@@ -183,6 +183,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 5933757942207843168}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 1664
+  triggered: 0
 --- !u!1001 &5960189068642727180
 PrefabInstance:
   m_ObjectHideFlags: 0
